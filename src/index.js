@@ -10,15 +10,15 @@ const myFileWriter = async (fileName, fileContent) => {
   });
 };
 
-const myFileReader = async (fileName) => {
+function myFileReader(fileName) {
   fs.readFile(fileName, "utf8", (err, data) => {
     if (err) {
       console.error(err);
       return;
     }
-    console.log(fileName);
+    console.log(`File ${fileName} has been read with content: ${data}`);
   });
-};
+}
 
 const myFileUpdater = async (fileName, fileContent) => {
   fs.appendFile(fileName, fileContent, (err) => {
