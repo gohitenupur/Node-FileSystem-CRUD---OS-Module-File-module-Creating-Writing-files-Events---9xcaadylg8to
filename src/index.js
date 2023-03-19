@@ -16,7 +16,7 @@ const myFileReader = async (fileName) => {
       console.error(err);
       return;
     }
-    console.log(data);
+    console.log(fileName);
   });
 };
 
@@ -45,7 +45,7 @@ const fileContent = "Hello";
 const updateContent = " World";
 
 myFileWriter(fileName, fileContent);
-myFileReader(fileName);
+// myFileReader(fileName);
 myFileUpdater(fileName, updateContent);
 myFileReader(fileName);
 myFileDeleter(fileName);
