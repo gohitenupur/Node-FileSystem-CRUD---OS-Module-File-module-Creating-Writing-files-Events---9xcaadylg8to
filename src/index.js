@@ -40,11 +40,14 @@ const myFileDeleter = async (fileName) => {
   });
 };
 
-let fileName = "File.txt";
-let fileContent = "Hello";
+const fileName = "File.txt";
+const fileContent = "Hello";
+const updateContent = " World";
+
 myFileWriter(fileName, fileContent);
 myFileReader(fileName);
-myFileUpdater(fileName, " World");
+myFileUpdater(fileName, updateContent);
+myFileReader(fileName);
 myFileDeleter(fileName);
 
 module.exports = { myFileWriter, myFileUpdater, myFileReader, myFileDeleter };
