@@ -47,7 +47,7 @@ const updateContent = " World";
 myFileWriter(fileName, fileContent);
 myFileReader(fileName);
 myFileUpdater(fileName, updateContent);
-// myFileReader(fileName);
+myFileReader(fileName);
 myFileDeleter(fileName);
 
 module.exports = { myFileWriter, myFileUpdater, myFileReader, myFileDeleter };
