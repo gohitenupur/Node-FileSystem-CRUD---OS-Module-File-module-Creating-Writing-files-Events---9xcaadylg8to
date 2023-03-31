@@ -2,13 +2,13 @@ const fs = require("fs.promises");
 
 const myFileWriter = async (fileName, fileContent) => {
   // write code here
-  fs.writeFile(fileName, fileContent, (err) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
+  try {
+    await fs.writeFile(fileName, fileContent);
     console.log(`${fileName} - ${fileContent}`);
-  });
+  } catch (err) {
+    console.error(err);
+  }
+
   // dont chnage function name
 };
 const myFileReader = async (fileName) => {
@@ -35,15 +35,12 @@ const myFileUpdater = async (fileName, fileContent) => {
 };
 
 const myFileDeleter = async (fileName) => {
-  await fs.unlinkSync(fileName, (err) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    console.log(fileName);
-  });
-  // write code here
-  // dont chnage function name
+  try {
+    await fs.unlink(fileName);
+    console.log(fileName + " has been deleted");
+  } catch (err) {
+    console.error(err);
+  }
 };
 const fileName = "File.txt";
 const fileContent = "Hello";
