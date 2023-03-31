@@ -1,45 +1,50 @@
-const fs = require("fs");
+const fs = require("fs.promises");
 
 const myFileWriter = async (fileName, fileContent) => {
+  // write code here
   fs.writeFile(fileName, fileContent, (err) => {
     if (err) {
       console.error(err);
       return;
     }
-    console.log(`${fileName} data ${fileContent}`);
+    console.log(`${fileName} - ${fileContent}`);
   });
+  // dont chnage function name
 };
-
 const myFileReader = async (fileName) => {
-  await fs.readFileSync(fileName, "utf8", (err, data) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    console.log(data);
-  });
+  try {
+    const data = await fs.readFile(fileName, "utf-8");
+    console.log("---" + data);
+    return data;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
 };
 
 const myFileUpdater = async (fileName, fileContent) => {
-  fs.appendFile(fileName, fileContent, (err) => {
+  // write code here
+  await fs.appendFile(fileName, fileContent, (err) => {
     if (err) {
       console.error(err);
       return;
     }
-    console.log(fileContent);
+    console.log(`${fileName} --${fileContent}`);
   });
+  // dont chnage function name
 };
 
 const myFileDeleter = async (fileName) => {
-  fs.unlink(fileName, (err) => {
+  await fs.unlinkSync(fileName, (err) => {
     if (err) {
       console.error(err);
       return;
     }
     console.log(fileName);
   });
+  // write code here
+  // dont chnage function name
 };
-
 const fileName = "File.txt";
 const fileContent = "Hello";
 const updateContent = " World";
